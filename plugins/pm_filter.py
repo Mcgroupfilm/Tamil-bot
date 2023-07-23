@@ -893,9 +893,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
             elif settings['is_shortlink'] and not settings['botpm'] and clicked not in PREMIUM_USER:
                 if clicked == typed:
+                    chat_id = query.message.chat.id
                     temp.SHORT[clicked] = query.message.chat.id 
                     g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
-                    await query.message.reply_text(text=f"{g} https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
+                    await query.answer(url=f"{g}")
                     
                    
 
