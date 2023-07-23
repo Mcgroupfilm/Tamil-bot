@@ -52,6 +52,7 @@ class temp(object):
     GETALL = {}
     SHORT = {}
     SETTINGS = {}
+    VERIFY = {}
 
 async def is_subscribed(bot, query):
     try:
