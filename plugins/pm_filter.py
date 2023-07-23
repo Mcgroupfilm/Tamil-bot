@@ -894,7 +894,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             elif settings['is_shortlink'] and not settings['botpm'] and clicked not in PREMIUM_USER:
                 if clicked == typed:
                     temp.SHORT[clicked] = query.message.chat.id 
-                    g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
+                    g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
                     await query.message.reply_text(text=f"{g} https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
                     
                    
