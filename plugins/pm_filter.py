@@ -1927,7 +1927,7 @@ async def auto_filter(client, msg, spoll=False):
                 cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
 
             if imdb and imdb.get('poster'):
-            try:
+                try:
     #         hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
     #         await m.delete()
     #         try:
@@ -1972,19 +1972,19 @@ async def auto_filter(client, msg, spoll=False):
     #             await fek.delete()
     #             await message.delete()
     # else:
-                fuk = await message.reply_photo(photo=imdb.get('poster'), text=cap, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
+                    fuk = await message.reply_photo(photo=imdb.get('poster'), text=cap, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     
-                await m.delete()
-                try:
-                    if settings['auto_delete']:
+                    await m.delete()
+                    try:
+                        if settings['auto_delete']:
+                            await asyncio.sleep(300)
+                            await fuk.delete()
+                            await message.delete()
+                    except KeyError:
+                        await save_group_settings(message.chat.id, 'auto_delete', True)
                         await asyncio.sleep(300)
                         await fuk.delete()
                         await message.delete()
-                except KeyError:
-                    await save_group_settings(message.chat.id, 'auto_delete', True)
-                    await asyncio.sleep(300)
-                    await fuk.delete()
-                    await message.delete()
     # if spoll:
     #     await msg.message.delete()
 
