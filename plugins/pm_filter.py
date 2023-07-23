@@ -901,27 +901,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 #                    await query.answer(f"𝐇𝐞𝐥𝐥𝐨 {query.from_user.first_name}, 𝐆𝐨𝐢𝐧𝐠 𝐓𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐒𝐞𝐜𝐭𝐢𝐨𝐧...📥", show_alert=True)
                     
                 
-                    file_send=await client.send_cached_media(
-                        chat_id=FILE_CHANNEL,
-                        file_id=g,
-                        caption=g,
-                        protect_content=True if ident == "filep" else False,
-                        reply_markup=InlineKeyboardMarkup(
-                             [
-                                [
-                                     InlineKeyboardButton('📤𝐉𝐨𝐢𝐧 𝐂𝐡𝐚𝐧𝐧𝐞𝐥📤', url="https://t.me/+7oxSIxY4X0c2ZGVl")
-                                 ],
-                                 [
-                                 InlineKeyboardButton('🧩𝐔𝐩𝐝𝐚𝐭𝐞🧩', url="https://t.me/bigmoviesworld"),
-                                 InlineKeyboardButton('☘𝐒𝐮𝐩𝐩𝐨𝐫𝐭☘', url="https://t.me/NasraniChatGroup")
-                                 ]                            
-                             ]
-                         )
-                     )
+                    
                 
                     Joel_tgx = await query.message.reply_text(
                         
-                        script.FILE_MSG.format(query.from_user.mention, title, size),
+                        text=f"{g}",
                         parse_mode=enums.ParseMode.HTML,
                         reply_markup=InlineKeyboardMarkup(
                             [
@@ -938,19 +922,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         await Joel_tgx.delete()
                         await file_send.delete()
                
-                    k = await client.send_message(
-                        chat_id=FILE_CHANNEL,                        
-                        text=script.DONE_MSG.format(query.from_user.mention, title, size),
-                        parse_mode=enums.ParseMode.HTML,
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                                [
-                                    InlineKeyboardButton("🔥 ᴄʜᴀɴɴᴇʟ 🔥", url=(MAIN_CHANNEL))
-                                ]
-                            ]
-                        )
-                    )
-
+                    
                    
 
 
