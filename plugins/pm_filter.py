@@ -897,12 +897,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
 #                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
                    
 #                if clicked == typed:
-                    await query.answer(f"𝐇𝐞𝐥𝐥𝐨 {query.from_user.first_name}, 𝐆𝐨𝐢𝐧𝐠 𝐓𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐒𝐞𝐜𝐭𝐢𝐨𝐧...📥", show_alert=True)
+#                    await query.answer(f"𝐇𝐞𝐥𝐥𝐨 {query.from_user.first_name}, 𝐆𝐨𝐢𝐧𝐠 𝐓𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐒𝐞𝐜𝐭𝐢𝐨𝐧...📥", show_alert=True)
                     
                 
                     file_send=await client.send_cached_media(
                         chat_id=FILE_CHANNEL,
-                        file_id=f"short_{file_id}",
+                        file_id=file_id,
                         caption=script.CHANNEL_CAP.format(query.from_user.mention, title, query.message.chat.title),
                         protect_content=True if ident == "filep" else False,
                         reply_markup=InlineKeyboardMarkup(
