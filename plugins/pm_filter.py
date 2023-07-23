@@ -894,7 +894,73 @@ async def cb_handler(client: Client, query: CallbackQuery):
             elif settings['is_shortlink'] and not settings['botpm'] and clicked not in PREMIUM_USER:
                 if clicked == typed:
                     temp.SHORT[clicked] = query.message.chat.id
-                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
+#                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
+                   
+#                if clicked == typed:
+                    await query.answer(f"𝐇𝐞𝐥𝐥𝐨 {query.from_user.first_name}, 𝐆𝐨𝐢𝐧𝐠 𝐓𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐒𝐞𝐜𝐭𝐢𝐨𝐧...📥", show_alert=True)
+                    
+                
+                    file_send=await client.send_cached_media(
+                        chat_id=FILE_CHANNEL,
+                        file_id=short_{file_id},
+                        caption=script.CHANNEL_CAP.format(query.from_user.mention, title, query.message.chat.title),
+                        protect_content=True if ident == "filep" else False,
+                        reply_markup=InlineKeyboardMarkup(
+                             [
+                                [
+                                     InlineKeyboardButton('📤𝐉𝐨𝐢𝐧 𝐂𝐡𝐚𝐧𝐧𝐞𝐥📤', url="https://t.me/+7oxSIxY4X0c2ZGVl")
+                                 ],
+                                 [
+                                 InlineKeyboardButton('🧩𝐔𝐩𝐝𝐚𝐭𝐞🧩', url="https://t.me/bigmoviesworld"),
+                                 InlineKeyboardButton('☘𝐒𝐮𝐩𝐩𝐨𝐫𝐭☘', url="https://t.me/NasraniChatGroup")
+                                 ]                            
+                             ]
+                         )
+                     )
+                
+                    Joel_tgx = await query.message.reply_text(
+                        
+                        script.FILE_MSG.format(query.from_user.mention, title, size),
+                        parse_mode=enums.ParseMode.HTML,
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                             [
+                              InlineKeyboardButton('📥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐋𝐢𝐧𝐤 📥 ', url = file_send.link)
+                           ],[
+                              InlineKeyboardButton("⚠️ 𝐂𝐚𝐧'𝐭 𝐀𝐜𝐜𝐞𝐬𝐬 ❓ 𝐂𝐥𝐢𝐜𝐤 𝐇𝐞𝐫𝐞 ⚠️", url=(FILE_FORWARD))
+                             ]
+                            ]
+                        )
+                    )
+                    if settings['auto_delete']:
+                        await asyncio.sleep(600)
+                        await Joel_tgx.delete()
+                        await file_send.delete()
+               
+                    k = await client.send_message(
+                        chat_id=FILE_CHANNEL,                        
+                        text=script.DONE_MSG.format(query.from_user.mention, title, size),
+                        parse_mode=enums.ParseMode.HTML,
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                [
+                                    InlineKeyboardButton("🔥 ᴄʜᴀɴɴᴇʟ 🔥", url=(MAIN_CHANNEL))
+                                ]
+                            ]
+                        )
+                    )
+
+                   
+
+
+                    
+                   
+
+                   
+
+                   
+
+                    
                     return
                 else:
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
