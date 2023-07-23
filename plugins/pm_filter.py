@@ -893,7 +893,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
             elif settings['is_shortlink'] and not settings['botpm'] and clicked not in PREMIUM_USER:
                 if clicked == typed:
-                    g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=file_{file_id}")
+                    g = await get_shortlink(chat_id=FILE_CHANNEL, file_id="short_{file_id}")
                     temp.SHORT[clicked] = query.message.chat.id
 #                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
                    
@@ -904,7 +904,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     file_send=await client.send_cached_media(
                         chat_id=FILE_CHANNEL,
                         file_id=g,
-                        caption=script.CHANNEL_CAP.format(query.from_user.mention, title, query.message.chat.title),
+                        caption=g,
                         protect_content=True if ident == "filep" else False,
                         reply_markup=InlineKeyboardMarkup(
                              [
