@@ -893,7 +893,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
             elif settings['is_shortlink'] and not settings['botpm'] and clicked not in PREMIUM_USER:
                 if clicked == typed:
-                    g = await get_shortlink(chat_id=FILE_CHANNEL, file_id="short_{file_id}")
                     temp.SHORT[clicked] = query.message.chat.id
 #                    await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
                    
@@ -903,20 +902,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 
                     
                 
-                    Joel_tgx = await query.message.reply_text(
-                        
-                        text=f"{g}",
-                        parse_mode=enums.ParseMode.HTML,
-                        reply_markup=InlineKeyboardMarkup(
+                    g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
+                    k = await query.message.reply_text(text=f"<b>📕Nᴀᴍᴇ ➠ : <code>{files.file_name}</code> \n\n🔗Sɪᴢᴇ ➠ : {get_size(files.file_size)}\n\n📂Fɪʟᴇ ʟɪɴᴋ ➠ : {g}\n\n<i>Note: This message is deleted in 20 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(
                             [
-                             [
-                              InlineKeyboardButton('📥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐋𝐢𝐧𝐤 📥 ', url = file_send.link)
-                           ],[
-                              InlineKeyboardButton("⚠️ 𝐂𝐚𝐧'𝐭 𝐀𝐜𝐜𝐞𝐬𝐬 ❓ 𝐂𝐥𝐢𝐜𝐤 𝐇𝐞𝐫𝐞 ⚠️", url=(FILE_FORWARD))
-                             ]
+                                [
+                                    InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=g)
+                                ], [
+                                    InlineKeyboardButton('⁉️ Hᴏᴡ Tᴏ Dᴏᴡɴʟᴏᴀᴅ ⁉️', url=await get_tutorial(chat_id))
+                                ]
                             ]
                         )
                     )
+                    await asyncio.sleep(1200)
                     if settings['auto_delete']:
                         await asyncio.sleep(600)
                         await Joel_tgx.delete()
