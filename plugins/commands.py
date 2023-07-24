@@ -462,7 +462,7 @@ async def start(client, message):
         except:
             pass
         return await message.reply('No such file exist.')
-    imdb = await get_poster(files) if IMDB else None
+    imdb = await get_poster(file) if IMDB else None
     content = message.text            
     TEMPLATE = script.IMDB_TEMPLATE_TXT
     cap = TEMPLATE.format(
