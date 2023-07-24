@@ -447,7 +447,7 @@ async def start(client, message):
             )
             if CUSTOM_FILE_CAPTION:
                 try:
-                    f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='')
+                    f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, movie_year='' if year is None else year, file_caption='')
                 except:
                     return
             await msg.edit_caption(f_caption)
@@ -462,6 +462,7 @@ async def start(client, message):
         except:
             pass
         return await message.reply('No such file exist.')
+    
     files = files_[0]
     title = '@TeamHMT ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))
     size=get_size(files.file_size)
