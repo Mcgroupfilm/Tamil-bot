@@ -411,7 +411,7 @@ async def start(client, message):
             title = '@TeamHMT ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), file.file_name.split()))
             size=get_size(file.file_size)
             f_caption = f"<code>{title}</code>"
-            imdb = await get_poster(content) if IMDB else None
+            imdb = await get_poster(title) if IMDB else None
             content = message.text            
             TEMPLATE = script.IMDB_TEMPLATE_TXT
             cap = TEMPLATE.format(
@@ -462,7 +462,7 @@ async def start(client, message):
         except:
             pass
         return await message.reply('No such file exist.')
-    imdb = await get_poster(content) if IMDB else None
+    imdb = await get_poster(title) if IMDB else None
     content = message.text            
     TEMPLATE = script.IMDB_TEMPLATE_TXT
     cap = TEMPLATE.format(
