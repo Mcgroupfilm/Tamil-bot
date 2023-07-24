@@ -462,7 +462,40 @@ async def start(client, message):
         except:
             pass
         return await message.reply('No such file exist.')
-    
+    imdb = await get_poster(content) if IMDB else None
+    content = message.text            
+    TEMPLATE = script.IMDB_TEMPLATE_TXT
+    cap = TEMPLATE.format(
+    qurey = search,
+    title = imdb['title'],
+    votes = imdb['votes'],
+    aka = imdb["aka"],
+    seasons = imdb["seasons"],
+    box_office = imdb['box_office'],
+    localized_title = imdb['localized_title'],
+    kind = imdb['kind'],
+    imdb_id = imdb["imdb_id"],
+    cast = imdb["cast"],
+    runtime = imdb["runtime"],
+    countries = imdb["countries"],
+    certificates = imdb["certificates"],
+    languages = imdb["languages"],
+    director = imdb["director"],
+    writer = imdb["writer"],
+    producer = imdb["producer"],
+    composer = imdb["composer"],
+    cinematographer = imdb["cinematographer"],
+    music_team = imdb["music_team"],
+    distributors = imdb["distributors"],
+    release_date = imdb['release_date'],
+    year = imdb['year'],
+    genres = imdb['genres'],
+    poster = imdb['poster'],
+    plot = imdb['plot'],
+    rating = imdb['rating'],
+    url = imdb['url'],
+    **locals()
+    )
     files = files_[0]
     title = '@TeamHMT ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))
     size=get_size(files.file_size)
