@@ -1,9 +1,13 @@
 # Kanged From @TroJanZheX
+from Script import script
+from info import CHANNELS, ADMIN, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, LOG_CHANNEL, PM, ADMINS
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+
+
 
 import traceback
 from asyncio import get_running_loop
 from io import BytesIO
-
 from googletrans import Translator
 from gtts import gTTS
 from pyrogram import filters
@@ -2205,6 +2209,8 @@ async def advantage_spell_chok(client, msg):
     text = msg.text
     loop = get_running_loop()
     audio = await loop.run_in_executor(None, convert, text)
+    info = await client.get_users(user_ids=msg.from_user.id)
+    reference_id = int(msg.chat.id)
     try:
         btn = [[
             InlineKeyboardButton(
@@ -2215,6 +2221,7 @@ async def advantage_spell_chok(client, msg):
 
         btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
         spell_check_del = await msg.reply_audio(
+            chat_id=ADMIN,
             audio=audio,
             caption=(script.CUDNT_FND.format(mv_rqst)),
             reply_markup=InlineKeyboardMarkup(btn)
