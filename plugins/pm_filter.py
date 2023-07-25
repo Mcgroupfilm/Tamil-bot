@@ -1,6 +1,6 @@
 # Kanged From @TroJanZheX
 from Script import script
-from info import CHANNELS, ADMIN, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, LOG_CHANNEL, PM, ADMINS
+from info import ADMIN
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 
