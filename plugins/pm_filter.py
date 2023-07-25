@@ -2212,7 +2212,7 @@ async def advantage_spell_chok(client, msg):
         await k.delete()
         return
 #    BOT_USERNAME = _.username
-    f= message.text
+    f= msg.text
     s=f.replace('/logo ' ,'')
     text=s.replace(' ', '%20')
     lol = (f"https://single-developers.up.railway.app/logo?name={text}")
