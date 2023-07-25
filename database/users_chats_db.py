@@ -31,14 +31,6 @@ class Database:
                 reason="",
             ),
         )
-    def convert(text):
-        audio = BytesIO()
-        i = Translator().translate(text, dest="en")
-        lang = i.src
-        tts = gTTS(text, lang=lang)
-        audio.name = lang + ".mp3"
-        tts.write_to_fp(audio)
-        return audio
 
     async def add_user(self, id, name):
         user = self.new_user(id, name)
