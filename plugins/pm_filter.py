@@ -2209,12 +2209,11 @@ async def advantage_spell_chok(client, msg):
         caption=(script.CUDNT_FND.format(mv_rqst)),
         reply_markup=InlineKeyboardMarkup(btn)
         )
-        
-    except Exception as e:
-        await m.edit(e)
-        await asyncio.sleep(10)
+    await asyncio.sleep(10)
         await spell_check_del.delete()
         await m.delete()
+    except Exception as e:
+        await m.edit(e)        
         e = traceback.format_exc()
         print(e)
 
