@@ -2230,7 +2230,7 @@ async def advantage_spell_chok(client, msg):
 #            await spell_check_del.delete()
 #            await m.delete()
     except Exception as e:
-        await m.edit(e)        
+#        await m.edit(e)        
         e = traceback.format_exc()
         print(e)
 
