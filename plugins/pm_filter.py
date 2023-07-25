@@ -1138,7 +1138,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
    
 
    
-   elif query.data.startswith("grp_checksub"):
+
+
+   elif query.data == "pages":
+        await query.answer()
+  
+
+    elif query.data.startswith("grp_checksub"):
         userid = query.message.reply_to_message.from_user.id
         if int(userid) not in [query.from_user.id, 0]:
             return await query.answer("This Is Not For You!", show_alert=True)
@@ -1151,14 +1157,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.reply_to_message.delete()
 
 
-   elif query.data.startswith("check_delete"):
+    elif query.data.startswith("check_delete"):
         userid = query.message.reply_to_message.from_user.id                        
         await query.message.delete()
         await query.message.reply_to_message.delete()
 
-   elif query.data == "pages":
-        await query.answer()
-    
+
     elif query.data.startswith("send_fsall"):
         temp_var, ident, key, offset = query.data.split("#")
         search = BUTTON0.get(key)
