@@ -123,7 +123,8 @@ class Database:
             'is_shortlink': IS_SHORTLINK,
             'tutorial': TUTORIAL,
             'is_tutorial': IS_TUTORIAL,
-            'update': UPDATE 
+            'update': UPDATE,
+            'update_url': UPDATE_URL
         }
         chat = await self.grp.find_one({'id':int(id)})
         if chat:
