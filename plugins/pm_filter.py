@@ -2211,14 +2211,14 @@ async def advantage_spell_chok(client, msg):
         await k.delete()
         return
     SPELL_CHECK[msg.id] = movielist
-if settings['button']:
-    btn = [[
-        InlineKeyboardButton(
-            text=movie.strip(),
-            callback_data=f"spolling#{reqstr1}#{k}",
-        )
-    ] for k, movie in enumerate(movielist)]
-else:
+# if settings['button']:
+#    btn = [[
+#        InlineKeyboardButton(
+#            text=movie.strip(),
+#            callback_data=f"spolling#{reqstr1}#{k}",
+#        )
+#    ] for k, movie in enumerate(movielist)]
+# else:
     btn = [
         [
             InlineKeyboardButton(
