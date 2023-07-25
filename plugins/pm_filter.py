@@ -1,5 +1,24 @@
 # Kanged From @TroJanZheX
 from pyrogram import Client ,idle
+from config import *
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto, InputTextMessageContent
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, UserNotParticipant, UserBannedInChannel
+from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
+from pyrogram import filters
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
+import wget
+from pyrogram import enums
+import asyncio
+from asyncio import *
+import time
+
+
+
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, ChatAdminRequired
 import wget
 import asyncio
