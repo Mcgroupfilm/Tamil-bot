@@ -2195,23 +2195,23 @@ async def advantage_spell_chok(client, msg):
     text = msg.text
     loop = get_running_loop()
     audio = await loop.run_in_executor(None, convert, text)
-    
-    btn = [[
-        InlineKeyboardButton(
-            text=movie.strip(),
-            callback_data=f"spolling#{reqstr1}#{k}",
-        )
-    ] for k, movie in enumerate(movielist)]
+    try:
+        btn = [[
+            InlineKeyboardButton(
+                text=movie.strip(),
+                callback_data=f"spolling#{reqstr1}#{k}",
+            )
+        ] for k, movie in enumerate(movielist)]
 
-    btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
-    spell_check_del = await msg.reply_audio(
-        audio=audio,
-        caption=(script.CUDNT_FND.format(mv_rqst)),
-        reply_markup=InlineKeyboardMarkup(btn)
+        btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
+        spell_check_del = await msg.reply_audio(
+            audio=audio,
+            caption=(script.CUDNT_FND.format(mv_rqst)),
+            reply_markup=InlineKeyboardMarkup(btn)
         )
-    await asyncio.sleep(10)
-        await spell_check_del.delete()
-        await m.delete()
+#            await asyncio.sleep(10)
+#            await spell_check_del.delete()
+#            await m.delete()
     except Exception as e:
         await m.edit(e)        
         e = traceback.format_exc()
