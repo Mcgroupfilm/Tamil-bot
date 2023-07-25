@@ -16,36 +16,3 @@ wget
 
 
 
-TgCrypto
-aiohttp
-python-dotenv
-requests
-
-requests
-wget
-asyncio
-datetime
-aiofiles
-
-aiohttp
-
-opencc
-telegraph
-
-pytube
-Python_ARQ
-TgCrypto
-bs4
-
-Pillow
-motor
-dnspython
-pymongo
-umongo
-psutil
-NumPy
-glitch_this
-opencv-python-headless
-pytz
-pykeyboard
-Python_ARQ
