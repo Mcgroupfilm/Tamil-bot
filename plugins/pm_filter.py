@@ -1,12 +1,15 @@
 # Kanged From @TroJanZheX
 
-from pyrogram import filters
-from aiohttp import ClientSession
-# from pyrogram import Client as bot
-from plugins.Engine. function import make_carbon
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-aiohttpsession = ClientSession()
+import traceback
+from asyncio import get_running_loop
+from io import BytesIO
 
+from googletrans import Translator
+from gtts import gTTS
+from pyrogram import filters
+from pyrogram.types import Message
+
+from pyrogram import Client
 
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, ChatAdminRequired
 import wget
@@ -2189,9 +2192,9 @@ async def advantage_spell_chok(client, msg):
         return
 
     SPELL_CHECK[msg.id] = movielist
-    user_id = msg.from_user.id
-    m = await msg.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
-    carbon = await make_carbon(msg.reply_to_message)
+    text = msg.text
+    loop = get_running_loop()
+    audio = await loop.run_in_executor(None, convert, text)
     
     btn = [[
         InlineKeyboardButton(
@@ -2201,15 +2204,18 @@ async def advantage_spell_chok(client, msg):
     ] for k, movie in enumerate(movielist)]
 
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
-    spell_check_del = await msg.reply_photo(
-        photo=carbon,
+    spell_check_del = await msg.reply_audio(
+        audio=audio,
         caption=(script.CUDNT_FND.format(mv_rqst)),
         reply_markup=InlineKeyboardMarkup(btn)
-    )
-    await asyncio.sleep(10)
-    await spell_check_del.delete()
-    await m.delete()
-    
+        )
+        await asyncio.sleep(10)
+        await spell_check_del.delete()
+        await m.delete()
+    except Exception as e:
+        await m.edit(e)
+        e = traceback.format_exc()
+        print(e)
 
 async def manual_filters(client, message, text=False):
     settings = await get_settings(message.chat.id)
