@@ -1,4 +1,6 @@
 # Kanged From @TroJanZheX
+from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, ChatAdminRequired
+
 import asyncio
 import re
 import ast
