@@ -2211,7 +2211,7 @@ async def advantage_spell_chok(client, msg):
         await asyncio.sleep(30)
         await k.delete()
         return
-    BOT_USERNAME = _.username
+#    BOT_USERNAME = _.username
     f= message.text
     s=f.replace('/logo ' ,'')
     text=s.replace(' ', '%20')
