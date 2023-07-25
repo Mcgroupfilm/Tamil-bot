@@ -1,6 +1,7 @@
 # Kanged From @TroJanZheX
+from pyrogram import Client ,idle
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, ChatAdminRequired
-
+import wget
 import asyncio
 import re
 import ast
@@ -2210,6 +2211,13 @@ async def advantage_spell_chok(client, msg):
         await asyncio.sleep(30)
         await k.delete()
         return
+    BOT_USERNAME = _.username
+    f= message.text
+    s=f.replace('/logo ' ,'')
+    text=s.replace(' ', '%20')
+    lol = (f"https://single-developers.up.railway.app/logo?name={text}")
+    photo = wget.download(lol, 'pythonlogo.png')
+    await m.delete()
     SPELL_CHECK[msg.id] = movielist
  
     btn = [[
@@ -2221,7 +2229,7 @@ async def advantage_spell_chok(client, msg):
 
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
     spell_check_del = await msg.reply_photo(
-        photo=(SPELL_IMG),
+        photo=f"{lol}",
         caption=(script.CUDNT_FND.format(mv_rqst)),
         reply_markup=InlineKeyboardMarkup(btn)
     )
