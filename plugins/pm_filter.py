@@ -2217,24 +2217,29 @@ async def advantage_spell_chok(client, msg):
             callback_data=f"spolling#{reqstr1}#{k}",
         )
     ] for k, movie in enumerate(movielist)]
+else:
+    if settings['button']:
+    btn = [
+        [
+            InlineKeyboardButton(
+                text=movie.strip(),
+                callback_data=f"spolling#{reqstr1}#{k}",
+            ),
+            InlineKeyboardButton(
+                text=movie.strip(),
+                callback_data=f"spolling#{reqstr1}#{k}",
+            ),
+        ]for k, movie in enumerate(movielist)]        
+    ]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
     spell_check_del = await msg.reply_photo(
         photo=(SPELL_IMG),
         caption=(script.CUDNT_FND.format(mv_rqst)),
         reply_markup=InlineKeyboardMarkup(btn)
     )
-    try:
-        if settings['auto_delete']:
-            await asyncio.sleep(60)
-            await spell_check_del.delete()
-    except KeyError:
-            grpid = await active_connection(str(message.from_user.id))
-            await save_group_settings(grpid, 'auto_delete', True)
-            settings = await get_settings(message.chat.id)
-            if settings['auto_delete']:
-                await asyncio.sleep(60)
-                await spell_check_del.delete()
-
+    await asyncio.sleep(10)
+    await spell_check_del.delete()
+    
 
 async def manual_filters(client, message, text=False):
     settings = await get_settings(message.chat.id)
