@@ -2191,7 +2191,7 @@ async def advantage_spell_chok(client, msg):
     SPELL_CHECK[msg.id] = movielist
     user_id = msg.from_user.id
     m = await msg.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
-    carbon = await make_carbon(msg.reply_to_message)
+    carbon = await make_carbon(msg.reply_to_message.text)
     
     btn = [[
         InlineKeyboardButton(
@@ -2208,6 +2208,7 @@ async def advantage_spell_chok(client, msg):
     )
     await asyncio.sleep(10)
     await spell_check_del.delete()
+    await m.delete()
     
 
 async def manual_filters(client, message, text=False):
