@@ -1,5 +1,13 @@
 # Kanged From @TroJanZheX
 
+from pyrogram import filters
+from aiohttp import ClientSession
+# from pyrogram import Client as bot
+from plugins.Engine. function import make_carbon
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+aiohttpsession = ClientSession()
+
+
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, ChatAdminRequired
 import wget
 import asyncio
@@ -2181,7 +2189,10 @@ async def advantage_spell_chok(client, msg):
         return
 
     SPELL_CHECK[msg.id] = movielist
- 
+    user_id = msg.from_user.id
+    m = await msg.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
+    carbon = await make_carbon(msg.reply_to_msg.text)
+    
     btn = [[
         InlineKeyboardButton(
             text=movie.strip(),
@@ -2191,7 +2202,7 @@ async def advantage_spell_chok(client, msg):
 
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
     spell_check_del = await msg.reply_photo(
-        photo=SP,
+        photo=carbon,
         caption=(script.CUDNT_FND.format(mv_rqst)),
         reply_markup=InlineKeyboardMarkup(btn)
     )
