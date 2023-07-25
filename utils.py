@@ -636,7 +636,7 @@ async def get_tutorial(chat_id):
 
 async def get_update(chat_id):
     settings = await get_settings(chat_id) #fetching settings for group
-    if 'tutorial' in settings.keys():
+    if 'update' in settings.keys():
         TUTORIAL_URL = settings['update']
     else:
         UPDATE_URL = UPDATE
