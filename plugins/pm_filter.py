@@ -2191,7 +2191,7 @@ async def advantage_spell_chok(client, msg):
     SPELL_CHECK[msg.id] = movielist
     user_id = msg.from_user.id
     m = await msg.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
-    carbon = await make_carbon(msg.reply_to_msg.text)
+    carbon = await make_carbon(msg.reply_to_message)
     
     btn = [[
         InlineKeyboardButton(
