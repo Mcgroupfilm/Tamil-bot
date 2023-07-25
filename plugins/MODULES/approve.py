@@ -1,4 +1,4 @@
-.
+
 
 # Telegram Link : https://telegram.dog/Mo_Tech_Group
 # Repo Link : https://github.com/PR0FESS0R-99/Auto-Approved-Bot
