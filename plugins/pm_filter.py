@@ -972,7 +972,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                  ],
                                  [
                                  InlineKeyboardButton('🧩𝐔𝐩𝐝𝐚𝐭𝐞🧩', url="https://t.me/bigmoviesworld"),
-                                 InlineKeyboardButton('☘𝐒𝐮𝐩𝐩𝐨𝐫𝐭☘', url="https://t.me/NasraniChatGroup")
+                                 InlineKeyboardButton('☘𝐒𝐮𝐩𝐩𝐨𝐫𝐭☘', f'delfile#{file_id}')
                                  ]                            
                              ]
                          )
