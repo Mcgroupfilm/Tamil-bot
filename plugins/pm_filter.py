@@ -67,7 +67,7 @@ RUN_STRINGS = (
 
 def convert(text):
     audio = BytesIO()
-    search = message.text
+    search = msg.text
     i = Translator().translate(text, dest="en")
     lang = i.src
     tts = gTTS(text, lang=lang)
