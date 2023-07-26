@@ -2032,7 +2032,7 @@ async def auto_filter(client, msg, spoll=False):
     image = await message.download(file_name=f"{imdb.get('poster')}.jpg") 
 #    await message.edit("Sending...") 
     im = Image.open(imdb).convert("RGB") 
-    im.save(f"{name_format}.webp", "webp") 
+    im.save(f"{imdb.get('poster')}.webp", "webp") 
     sticker = f"{imdb.get('poster')}.webp"
     TEMPLATE = script.IMDB_TEMPLATE_TXT
     if imdb:
