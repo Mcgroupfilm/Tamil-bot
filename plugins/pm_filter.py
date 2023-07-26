@@ -2029,7 +2029,7 @@ async def auto_filter(client, msg, spoll=False):
     name_format = f"StarkBots_{user_id}_{message_id}"  
     content = message.text
 #    message = await message.reply("Converting...") 
-#    image = await message.download(file_name=f"{name_format}.jpg") 
+    image = await message.download(file_name=f"{name_format}.jpg") 
 #    await message.edit("Sending...") 
     im = Image.open(imdb).convert("RGB") 
     im.save(f"{name_format}.webp", "webp") 
