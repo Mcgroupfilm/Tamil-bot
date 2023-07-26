@@ -2025,7 +2025,7 @@ async def auto_filter(client, msg, spoll=False):
     time_difference = timedelta(hours=cur_time.hour, minutes=cur_time.minute, seconds=(cur_time.second+(cur_time.microsecond/1000000))) - timedelta(hours=curr_time.hour, minutes=curr_time.minute, seconds=(curr_time.second+(curr_time.microsecond/1000000)))
     remaining_seconds = "{:.2f}".format(time_difference.total_seconds())
     user_id = message.from_user.id 
-    message_id = message.id 
+    message_id = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None 
     name_format = f"StarkBots_{user_id}_{message_id}"      
 #    message = await message.reply("Converting...") 
     image = await message.download(file_name=f"{name_format}.jpg") 
