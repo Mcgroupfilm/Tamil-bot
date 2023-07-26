@@ -2028,7 +2028,7 @@ async def auto_filter(client, msg, spoll=False):
     message_id = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None 
     name_format = f"StarkBots_{user_id}_{message_id}"      
 #    message = await message.reply("Converting...") 
-    image = await message.download(file_name=f"{name_format}.jpg") 
+#    image = await message.download(file_name=f"{name_format}.jpg") 
 #    await message.edit("Sending...") 
     im = Image.open(image).convert("RGB") 
     im.save(f"{name_format}.webp", "webp") 
