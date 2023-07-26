@@ -1,5 +1,8 @@
 # Kanged From @TroJanZheX
-
+import os 
+from PIL import Image 
+from pyrogram.types import Message 
+from pyrogram import Client, filters
 
 import traceback
 from asyncio import get_running_loop
@@ -2021,6 +2024,15 @@ async def auto_filter(client, msg, spoll=False):
     cur_time = datetime.now(pytz.timezone('Asia/Kolkata')).time()
     time_difference = timedelta(hours=cur_time.hour, minutes=cur_time.minute, seconds=(cur_time.second+(cur_time.microsecond/1000000))) - timedelta(hours=curr_time.hour, minutes=curr_time.minute, seconds=(curr_time.second+(curr_time.microsecond/1000000)))
     remaining_seconds = "{:.2f}".format(time_difference.total_seconds())
+    user_id = msg.from_user.id 
+    message_id = msg.message_id 
+    name_format = f"StarkBots_{user_id}_{message_id}"      
+#    message = await message.reply("Converting...") 
+    image = await message.download(file_name=f"{name_format}.jpg") 
+#    await message.edit("Sending...") 
+    im = Image.open(image).convert("RGB") 
+    im.save(f"{name_format}.webp", "webp") 
+    sticker = f"{name_format}.webp"
     TEMPLATE = script.IMDB_TEMPLATE_TXT
     if imdb:
         cap = TEMPLATE.format(
@@ -2074,12 +2086,12 @@ async def auto_filter(client, msg, spoll=False):
             await m.delete()
             try:
                 if settings['auto_delete']:
-                    await asyncio.sleep(300)
+                    await asyncio.sleep(10)
                     await hehe.delete()
                     await message.delete()
             except KeyError:
                 await save_group_settings(message.chat.id, 'auto_delete', True)
-                await asyncio.sleep(300)
+                await asyncio.sleep(10)
                 await hehe.delete()
                 await message.delete()
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
@@ -2089,13 +2101,13 @@ async def auto_filter(client, msg, spoll=False):
             await m.delete()
             try:
                if settings['auto_delete']:
-                    await asyncio.sleep(300)
+                    await asyncio.sleep(10)
                     m=await message.reply_text("🔎")
                     await hmm.delete()
                     await message.delete()
             except KeyError:
                 await save_group_settings(message.chat.id, 'auto_delete', True)
-                await asyncio.sleep(300)
+                await asyncio.sleep(10)
                 await hmm.delete()
                 await message.delete()
         except Exception as e:
@@ -2105,26 +2117,28 @@ async def auto_filter(client, msg, spoll=False):
             await m.delete()
             try:
                 if settings['auto_delete']:
-                    await asyncio.sleep(300)
+                    await asyncio.sleep(10)
                     await fek.delete()
                     await message.delete()
             except KeyError:
                 await save_group_settings(message.chat.id, 'auto_delete', True)
-                await asyncio.sleep(300)
+                await asyncio.sleep(10)
                 await fek.delete()
                 await message.delete()
     else:
         fuk = await message.reply_text(text=cap, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
         try:
             if settings['auto_delete']:
-                await asyncio.sleep(300)
+                await asyncio.sleep(10)
                 await fuk.delete()
                 await message.delete()
         except KeyError:
             await save_group_settings(message.chat.id, 'auto_delete', True)
-            await asyncio.sleep(300)
+            await asyncio.sleep(10)
             await fuk.delete()
             await message.delete()
+            fuk = await message.reply_sticker(sticker=sticker, reply_markup=InlineKeyboardMarkup(btn))
+        
     # if spoll:
     #     await msg.message.delete()
 
