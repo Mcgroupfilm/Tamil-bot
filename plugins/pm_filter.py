@@ -67,10 +67,12 @@ RUN_STRINGS = (
 
 def convert(text):
     audio = BytesIO()
+    search = message.text
     i = Translator().translate(text, dest="en")
     lang = i.src
     tts = gTTS(text, lang=lang)
-    audio.name = lang + ".mp3"
+#    audio.name = lang + ".mp3"
+    audio.name = search + ".mp3"
     tts.write_to_fp(audio)
     return audio
 
