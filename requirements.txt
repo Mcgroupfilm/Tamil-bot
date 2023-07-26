@@ -17,4 +17,4 @@ wget
 gtts
 googletrans==4.0.0-rc1
 python-decouple
-Pillow~=8.3.1
+
