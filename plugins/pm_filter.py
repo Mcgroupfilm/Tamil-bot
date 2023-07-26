@@ -1,8 +1,4 @@
 # Kanged From @TroJanZheX
-from Script import script
-from info import ADMIN
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-
 
 
 import traceback
@@ -2209,8 +2205,7 @@ async def advantage_spell_chok(client, msg):
     text = msg.text
     loop = get_running_loop()
     audio = await loop.run_in_executor(None, convert, text)
-    info = await client.get_users(user_ids=msg.from_user.id)
-    reference_id = int(msg.chat.id)
+    
     try:
         btn = [[
             InlineKeyboardButton(
@@ -2220,8 +2215,7 @@ async def advantage_spell_chok(client, msg):
         ] for k, movie in enumerate(movielist)]
 
         btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
-        spell_check_del = await msg.reply_audio(
-            chat_id=ADMIN,
+        spell_check_del = await msg.reply_audio(            
             audio=audio,
             caption=(script.CUDNT_FND.format(mv_rqst)),
             reply_markup=InlineKeyboardMarkup(btn)
