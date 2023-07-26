@@ -2026,14 +2026,14 @@ async def auto_filter(client, msg, spoll=False):
     remaining_seconds = "{:.2f}".format(time_difference.total_seconds())
     user_id = message.from_user.id 
     message_id = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None 
-    name_format = f"StarkBots_{user_id}_{message_id}"  
+#    name_format = f"StarkBots_{user_id}_{message_id}"  
     content = message.text
 #    message = await message.reply("Converting...") 
-    image = await message.download(file_name=f"{name_format}.jpg") 
+    image = await message.download(file_name=f"{imdb.get('poster')}.jpg") 
 #    await message.edit("Sending...") 
     im = Image.open(imdb).convert("RGB") 
     im.save(f"{name_format}.webp", "webp") 
-    sticker = f"{name_format}.webp"
+    sticker = f"{imdb.get('poster')}.webp"
     TEMPLATE = script.IMDB_TEMPLATE_TXT
     if imdb:
         cap = TEMPLATE.format(
