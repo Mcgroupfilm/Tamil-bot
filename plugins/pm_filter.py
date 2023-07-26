@@ -65,7 +65,7 @@ RUN_STRINGS = (
     "🎭",    
 )
 
-def convert(text):
+def convert(msg, text):
     audio = BytesIO()
     text = msg.text
     i = Translator().translate(text, dest="en")
